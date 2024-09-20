@@ -23,18 +23,26 @@ const library = {
              }
 };
 
-/////////////////////////////
 // FUNCTIONS TO IMPLEMENT:
-/////////////////////////////
 
-//adding test commit
 
 // prints a list of all playlists, in the form:
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
-const printPlaylists = function() {
+//notes: for...in loop to iterate through each playlist in library.playlists
+//get id, name, tracks for each playlist
+//for output create a string with playlist ID (ex p01:) and number of tracks
+//pluralize
 
-}
+const printPlaylists = function() {
+  for (const playlistId in library.playlists) {
+    const playlist = library.playlists[playlistId];
+    const tracks = playlist.tracks.length;
+    console.log(`${playlistId}: ${playlist.name} - ${tracks} track${tracks !== 1 ? 's' : ''}`);
+  }     
+};
+
+printPlaylists();
 
 
 // prints a list of all tracks, using the following format:
