@@ -39,10 +39,13 @@ const printPlaylists = function() {
     const playlist = library.playlists[playlistId];
     const tracks = playlist.tracks.length;
     console.log(`${playlistId}: ${playlist.name} - ${tracks} track${tracks !== 1 ? 's' : ''}`);
-  }     
+  }
 };
 
 printPlaylists();
+
+
+
 
 
 // prints a list of all tracks, using the following format:
@@ -55,20 +58,53 @@ printPlaylists();
 
 const printTracks = function() {
   for (const trackId in library.tracks) {
-       const track = library.tracks[trackId];
-       console.log(`${trackId}: ${track.name} by ${track.artist} (${track.album})`);
+  const track = library.tracks[trackId];
+  console.log(`${trackId}: ${track.name} by ${track.artist} (${track.album})`);
   }
 };
 
 printTracks();
 
+
+
+
+
 // prints a list of tracks for a given playlist, using the following format:
 // p01: Coding Music - 2 tracks
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
-const printPlaylist = function(playlistId) {
+// print playlist details with its tracks
+//notes and procedure: check if playlist exists
+//print playlist header
+//print each track in the playlist
 
-}
+const printPlaylist = function(playlistId) {
+  const playlist = library.playlists[playlistId];
+  if (!playlist) {
+  console.log(`Playlist does not exist. ID: ${playlistId}`);
+       return;
+  }
+
+  const trackCount = playlist.tracks.length;
+  console.log(`${playlistId}: ${playlist.name} - ${trackCount} track${trackCount !== 1 ? 's' : ''}`);
+
+  playlist.tracks.forEach(trackId => {
+    const track = library.tracks[trackId];
+    console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`);
+  });
+};
+
+printPlaylist();
+//function to to print playlist id
+//inside the function use playlistid to access playlist from object
+//check if the playlist exists
+//check the length of the tracks array
+//print playlist info. used trackcount to pluralize
+//used forEach to loop through the tracks
+//print track info
+
+
+
 
 
 // adds an existing track to an existing playlist
