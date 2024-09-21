@@ -94,14 +94,15 @@ const printPlaylist = function(playlistId) {
   });
 };
 
-printPlaylist();
+printPlaylist('p01');
+printPlaylist('p02');
 //function to to print playlist id
 //inside the function use playlistid to access playlist from object
 //check if the playlist exists
 //check the length of the tracks array
 //print playlist info. used trackcount to pluralize
 //used forEach to loop through the tracks
-//print track info
+//print playlist info
 
 
 
@@ -109,8 +110,38 @@ printPlaylist();
 
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
+  const playlist = library.playlists[playlistId];
+  const track = library.tracks[trackId];
 
-}
+  if (!playlist) {
+    console.log(`No such playlist ID: ${playlistId}`);
+    return;
+  }
+
+  if (!track) {
+    console.log(`No such track ID: ${trackId}`);
+    return;
+  }
+
+  if (playlist.tracks.includes(trackId)) {
+    console.log(`Track in Playlist: ${trackId}`);
+    return;
+  }
+
+  playlist.tracks.push(trackId);
+  console.log(`Added track ${track.name} to playlist ${playlist.name}`);
+};
+//steps: function gets playlists and tracks
+//check if playlist exists
+//check if track exists
+//check if the track is in the playlist already
+//add the track to the playlist
+// example: addTrackToPlaylist('t02', 'p02');
+
+
+
+
+
 
 
 // generates a unique id
