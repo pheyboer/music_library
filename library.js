@@ -183,8 +183,22 @@ const addTrack = function(name, artist, album) {
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
+  const playlistId = generateUid();
 
-}
+  const newPlaylist = {
+    id: playlistId,
+    name: name,
+    tracks: []
+  };
+
+  library.playlists[playlistId] = newPlaylist;
+
+  console.log(`Added New Playlist: ${newPlaylist.name} (ID: ${playlistId})`);
+};
+//steps: get ID for new playlist
+//create a new playlist object
+// add playlist to library
+//call: addPlaylist("Metal");
 
 
 // STRETCH:
