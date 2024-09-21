@@ -105,6 +105,7 @@ printPlaylist('p02');
 //print playlist info. used trackcount to pluralize
 //used forEach to loop through the tracks
 //print playlist info
+//after refactoring functions are invoked: library.printTracks()
 
 
 
