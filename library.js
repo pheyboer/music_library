@@ -81,8 +81,8 @@ printTracks();
 const printPlaylist = function(playlistId) {
   const playlist = library.playlists[playlistId];
   if (!playlist) {
-  console.log(`Playlist does not exist. ID: ${playlistId}`);
-       return;
+    console.log(`Playlist does not exist. ID: ${playlistId}`);
+  return;
   }
 
   const trackCount = playlist.tracks.length;
@@ -148,7 +148,7 @@ const addTrackToPlaylist = function(trackId, playlistId) {
 // (already implemented: use this for addTrack and addPlaylist)
 const generateUid = function() {
   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-}
+};
 
 
 // adds a track to the library
@@ -171,12 +171,6 @@ const addTrack = function(name, artist, album) {
 //add new track to library.tracks with the generateUid as a key
 //console log for the track that was added details
 // call this with: addTrack("New Track", "New Artist", "New Album");
-
-
-
-
-
-
 
 
 
@@ -204,7 +198,7 @@ const addPlaylist = function(name) {
 // STRETCH:
 // given a query string string, prints a list of tracks
 // where the name, artist or album contains the query string (case insensitive)
-// tip: use "string".search("tri") 
+// tip: use "string".search("tri")
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search
 const printSearchResults = function(query) {
 
