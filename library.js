@@ -24,6 +24,8 @@ const library = {
 };
 
 // FUNCTIONS TO IMPLEMENT:
+//now refactoring to ensure that functions that operate on the library object are properties of the library object
+//turning them into methods on the library object
 
 
 // prints a list of all playlists, in the form:
@@ -34,9 +36,9 @@ const library = {
 //for output create a string with playlist ID (ex p01:) and number of tracks
 //pluralize
 
-const printPlaylists = function() {
+printPlaylists: function() {
   for (const playlistId in library.playlists) {
-    const playlist = library.playlists[playlistId];
+    const playlist = this.playlists[playlistId];
     const tracks = playlist.tracks.length;
     console.log(`${playlistId}: ${playlist.name} - ${tracks} track${tracks !== 1 ? 's' : ''}`);
   }
@@ -56,9 +58,9 @@ printPlaylists();
 //get id name artist and album for each track
 //output like above with album in brackets
 
-const printTracks = function() {
-  for (const trackId in library.tracks) {
-  const track = library.tracks[trackId];
+printTracks: function() {
+  for (const trackId in this.tracks) {
+  const track = this.tracks[trackId];
   console.log(`${trackId}: ${track.name} by ${track.artist} (${track.album})`);
   }
 };
@@ -78,8 +80,8 @@ printTracks();
 //print playlist header
 //print each track in the playlist
 
-const printPlaylist = function(playlistId) {
-  const playlist = library.playlists[playlistId];
+printPlaylist: function(playlistId) {
+  const playlist = this.playlists[playlistId];
   if (!playlist) {
     console.log(`Playlist does not exist. ID: ${playlistId}`);
   return;
@@ -89,7 +91,7 @@ const printPlaylist = function(playlistId) {
   console.log(`${playlistId}: ${playlist.name} - ${trackCount} track${trackCount !== 1 ? 's' : ''}`);
 
   playlist.tracks.forEach(trackId => {
-    const track = library.tracks[trackId];
+    const track = this.tracks[trackId];
     console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`);
   });
 };
@@ -109,9 +111,9 @@ printPlaylist('p02');
 
 
 // adds an existing track to an existing playlist
-const addTrackToPlaylist = function(trackId, playlistId) {
-  const playlist = library.playlists[playlistId];
-  const track = library.tracks[trackId];
+addTrackToPlaylist: function(trackId, playlistId) {
+  const playlist = this.playlists[playlistId];
+  const track = this.tracks[trackId];
 
   if (!playlist) {
     console.log(`No such playlist ID: ${playlistId}`);
@@ -152,8 +154,8 @@ const generateUid = function() {
 
 
 // adds a track to the library
-const addTrack = function(name, artist, album) {
-  const trackId = generateUid();
+addTrack: function(name, artist, album) {
+  const trackId = this.generateUid();
 
   const newTrack = {
     id: trackId,
@@ -162,7 +164,7 @@ const addTrack = function(name, artist, album) {
     album: album
   };
 
-  library.tracks[trackId] = newTrack;
+  this.tracks[trackId] = newTrack;
 
   console.log(`Add Track: ${newTrack.name} by ${newTrack.artist} (Album: ${newTrack.album})`);
 };
@@ -176,8 +178,8 @@ const addTrack = function(name, artist, album) {
 
 
 // adds a playlist to the library
-const addPlaylist = function(name) {
-  const playlistId = generateUid();
+addPlaylist: function(name) {
+  const playlistId = this.generateUid();
 
   const newPlaylist = {
     id: playlistId,
@@ -185,7 +187,7 @@ const addPlaylist = function(name) {
     tracks: []
   };
 
-  library.playlists[playlistId] = newPlaylist;
+  this.playlists[playlistId] = newPlaylist;
 
   console.log(`Added New Playlist: ${newPlaylist.name} (ID: ${playlistId})`);
 };
@@ -193,6 +195,7 @@ const addPlaylist = function(name) {
 //create a new playlist object
 // add playlist to library
 //call: addPlaylist("Metal");
+//new call:
 
 
 // STRETCH:
